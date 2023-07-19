@@ -1,8 +1,4 @@
-
-// CODE FOR BASIC VENDING MACHINE
-// here item cost is 15 rs .
-// we can only give 3 input rs i.e 0, 5rs, or 10rs.
-
+// Code your design here
 module vending_machine(
 input clk, input rst, input [1:0]in, 
   // 01 = 5 rs, 10 = 10 rs
@@ -12,7 +8,8 @@ parameter s0 = 2'b00;
 parameter s1 = 2'b01;
 parameter s2 = 2'b10;
 reg[1:0] c_state,n_state;
-  always@ (posedge clk)
+  
+  always@ (posedge clk) // for the sequential block
   begin
 if(rst == 1)
 begin
@@ -22,9 +19,11 @@ change = 2'b00;
 end
 else
 c_state = n_state;
+  end
   
+  always@(*) // for the combinational block
 case(c_state)
-s0: //state 0 =  0 rs state
+s0: //state 0 : 0 rs
 if(in == 0)
 begin
 n_state = s0;
@@ -43,7 +42,7 @@ n_state = s2;
 out = 0;
 change = 2'b00;
 end
-s1: //state 1  = 5 rs state
+s1: //state 1 : 5 rs
 if(in == 0)
 begin
 n_state = s0;
@@ -82,5 +81,4 @@ out = 1;
 change = 2'b01; //change returned 5 rs and 1 bottle
 end
 endcase
-  end
 endmodule
