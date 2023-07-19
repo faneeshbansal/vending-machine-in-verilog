@@ -25,7 +25,7 @@ rst = 1;
 #6 rst = 0;
 in = 2;
 #19 in = 2;
-#25 $finish;
+#55 $finish;
 end
 //always #5 clk = ~clk;
 endmodule
