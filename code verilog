@@ -21,7 +21,7 @@ else
 c_state = n_state;
   end
   
-  always@(*) // for the combinational block
+  always@(in, c_state) // for the combinational block
 case(c_state)
 s0: //state 0 : 0 rs
 if(in == 0)
